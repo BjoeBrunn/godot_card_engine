@@ -1,0 +1,5 @@
+res://main.tscn
+res://addons/cardengine/core/utils.gd
+res://addons/cardengine/core/abstract_manager.gd
+res://addons/cardengine/core/card_engine_instance.gd
+res://addons/cardengine/core/general_manager.gd
