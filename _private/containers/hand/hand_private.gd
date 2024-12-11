@@ -14,8 +14,8 @@ func _init():
 	_grid_card_width = 150
 	_grid_fixed_width = true
 	_grid_card_spacing = Vector2(0.5, 1)
-	_grid_halign = HALIGN_CENTER
-	_grid_valign = VALIGN_CENTER
+	_grid_halign = HORIZONTAL_ALIGNMENT_CENTER # HALIGN_CENTER
+	_grid_valign = VERTICAL_ALIGNMENT_CENTER # VALIGN_CENTER
 	_grid_columns = -1
 	_grid_expand = false
 
@@ -74,4 +74,3 @@ func _init():
 	_adjust_scale = Vector2(0, 0)
 	_adjust_rot_mode = "absolute"
 	_adjust_rot = 0
-

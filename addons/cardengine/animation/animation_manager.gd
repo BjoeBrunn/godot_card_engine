@@ -48,8 +48,8 @@ func validate_form(form_name: String, form: Dictionary) -> Array[String]:
 func load_animations(anim_folder: String) -> void:
 	_folder = anim_folder
 
-	var dir = Directory.new()
-	if dir.open(_folder) == OK:
+	var dir = DirAccess.open(_folder)
+	if dir:
 		dir.list_dir_begin()
 		var filename = dir.get_next()
 		while filename != "":
@@ -92,7 +92,7 @@ func delete_animation(id: String):
 	var anim = _animations[id]
 	_animations.erase(id)
 
-	var dir = Directory.new()
+	var dir = DirAccess.open("res://")
 	dir.remove(FORMAT_ANIM_PATH % [_folder, anim.id])
 
 	emit_signal("changed")
@@ -341,4 +341,3 @@ func _to_val_mode(mode: String) -> int:
 			return StepValue.Mode.RANDOM
 		_:
 			return StepValue.Mode.INITIAL
-

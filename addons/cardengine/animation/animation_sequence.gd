@@ -103,7 +103,7 @@ func remove_step(index: int) -> void:
 	if index < 0 or index >= _data.size():
 		return
 
-	_data.remove(index)
+	_data.remove_at(index)
 
 
 func shift_step_left(index: int) -> void:
@@ -118,4 +118,3 @@ func shift_step_right(index: int) -> void:
 		return
 
 	Utils.shift_elt_right(_data, index)
-
