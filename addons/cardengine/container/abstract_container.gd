@@ -269,9 +269,9 @@ func _grid_layout(trans: CardTransform, grid_cell: int, card_size: Vector2):
 	# Card size
 	if not _grid_fixed_width:
 		if _grid_columns > 0:
-			_grid_card_width = rect_size.x / (_grid_columns * _grid_card_spacing.x)
+			_grid_card_width = size.x / (_grid_columns * _grid_card_spacing.x)
 		else:
-			_grid_card_width = rect_size.x / (_store.count() * _grid_card_spacing.x)
+			_grid_card_width = size.x / (_store.count() * _grid_card_spacing.x)
 
 	width_ratio = _grid_card_width / card_size.x
 	height_adjusted = card_size.y * width_ratio
@@ -285,30 +285,30 @@ func _grid_layout(trans: CardTransform, grid_cell: int, card_size: Vector2):
 		col_height = height_adjusted * _grid_card_spacing.y
 
 	if _grid_expand:
-		if row_width > rect_size.x:
-			rect_min_size.x = row_width
+		if row_width > size.x:
+			custom_minimum_size.x = row_width
 
-		if col_height > rect_size.y || _grid_columns > 0:
-			rect_min_size.y = col_height
+		if col_height > size.y || _grid_columns > 0:
+			custom_minimum_size.y = col_height
 
 	spacing_offset.x = (_grid_card_width * _grid_card_spacing.x - _grid_card_width) / 2.0
 	spacing_offset.y = (height_adjusted * _grid_card_spacing.y - height_adjusted) / 2.0
 
 	match _grid_halign:
-		HALIGN_LEFT:
+		HORIZONTAL_ALIGNMENT_LEFT: #HALIGN_LEFT:
 			grid_offset.x = spacing_offset.x
-		HALIGN_CENTER:
-			grid_offset.x = spacing_offset.x + (rect_size.x - row_width) / 2.0
-		HALIGN_RIGHT:
-			grid_offset.x = spacing_offset.x + (rect_size.x - row_width)
+		HORIZONTAL_ALIGNMENT_CENTER: #HALIGN_CENTER:
+			grid_offset.x = spacing_offset.x + (size.x - row_width) / 2.0
+		HORIZONTAL_ALIGNMENT_RIGHT: #HALIGN_RIGHT:
+			grid_offset.x = spacing_offset.x + (size.x - row_width)
 
 	match _grid_valign:
-		VALIGN_TOP:
+		VERTICAL_ALIGNMENT_TOP: #VALIGN_TOP:
 			grid_offset.y = spacing_offset.y
-		VALIGN_CENTER:
-			grid_offset.y = spacing_offset.y + (rect_size.y - col_height) / 2.0
-		VALIGN_BOTTOM:
-			grid_offset.y = spacing_offset.y + (rect_size.y - col_height)
+		VERTICAL_ALIGNMENT_CENTER: #VALIGN_CENTER:
+			grid_offset.y = spacing_offset.y + (size.y - col_height) / 2.0
+		VERTICAL_ALIGNMENT_BOTTOM: #VALIGN_BOTTOM:
+			grid_offset.y = spacing_offset.y + (size.y - col_height)
 
 	var pos: Vector2 = Vector2(0.0 , 0.0)
 	# Initial pos
@@ -444,10 +444,10 @@ func _adjusted_trans(origin: CardTransform) -> CardTransform:
 		has_adjust = true
 
 	if _adjust_rot_mode == "relative":
-		adjusted.rot += deg2rad(_adjust_rot)
+		adjusted.rot += deg_to_rad(_adjust_rot)
 		has_adjust = true
 	elif _adjust_rot_mode == "absolute":
-		adjusted.rot = deg2rad(_adjust_rot)
+		adjusted.rot = deg_to_rad(_adjust_rot)
 		has_adjust = true
 
 	if has_adjust:
@@ -475,9 +475,9 @@ func _clear() -> void:
 func _map_from(trans: CardTransform) -> CardTransform:
 	var result := CardTransform.new()
 
-	result.pos = trans.pos + rect_position
-	result.scale = trans.scale * rect_scale
-	result.rot = trans.rot + rect_rotation
+	result.pos = trans.pos + position
+	result.scale = trans.scale * scale
+	result.rot = trans.rot + rotation
 
 	return result
 
@@ -485,9 +485,9 @@ func _map_from(trans: CardTransform) -> CardTransform:
 func _map_to(trans: CardTransform) -> CardTransform:
 	var result := CardTransform.new()
 
-	result.pos = trans.pos - rect_position
-	result.scale = trans.scale / rect_scale
-	result.rot = trans.rot - rect_rotation
+	result.pos = trans.pos - position
+	result.scale = trans.scale / scale
+	result.rot = trans.rot - rotation
 
 	return result
 
