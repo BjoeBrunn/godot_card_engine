@@ -14,8 +14,8 @@ func _init():
 	_grid_card_width = 170
 	_grid_fixed_width = true
 	_grid_card_spacing = Vector2(1.1, 1.1)
-	_grid_halign = HALIGN_LEFT
-	_grid_valign = VALIGN_TOP
+	_grid_halign = HORIZONTAL_ALIGNMENT_LEFT #HALIGN_LEFT
+	_grid_valign = VERTICAL_ALIGNMENT_TOP #VALIGN_TOP
 	_grid_columns = 2
 	_grid_expand = false
 
@@ -40,8 +40,8 @@ func _init():
 	# Angle fine tuning
 	_fine_angle = false
 	_fine_angle_mode = FineTuningMode.LINEAR
-	_fine_angle_min = deg2rad(0)
-	_fine_angle_max = deg2rad(0)
+	_fine_angle_min = deg_to_rad(0)
+	_fine_angle_max = deg_to_rad(0)
 
 	# Scale fine tuning
 	_fine_scale = false
@@ -74,4 +74,3 @@ func _init():
 	_adjust_scale = Vector2(0, 0)
 	_adjust_rot_mode = "disabled"
 	_adjust_rot = 0
-
