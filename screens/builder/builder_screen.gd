@@ -27,6 +27,9 @@ var _selected_txt: String = "none"
 
 
 func _ready() -> void:
+	var d = CardEngine.db()
+	var c = d.get_database("main")
+	
 	var db = CardEngine.db().get_database("main")
 
 	_store.populate_all(db)
