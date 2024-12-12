@@ -1,13 +1,13 @@
 extends Node
 
-var _screens : Dictionary = {
+var _screens = {
 	"menu": preload("res://screens/menu/menu_screen.tscn"),
 	"builder": preload("res://screens/builder/builder_screen.tscn"),
 	"game": preload("res://screens/game/game_screen.tscn"),
 	"board": preload("res://screens/board/board_screen.tscn")
 }
 
-@onready var _screen_layer = $ScreenLayer
+onready var _screen_layer = $ScreenLayer
 
 
 func _ready():
@@ -30,7 +30,6 @@ func change_screen(screen_name: String) -> void:
 		_screen_layer.remove_child(child)
 		child.queue_free()
 
-	# Warnings will resolve with typed Dictionary
-	var screen = _screens[screen_name].instantiate()
-	screen.connect("next_screen", Callable(self, "change_screen"))
+	var screen = _screens[screen_name].instance()
+	screen.connect("next_screen", self, "change_screen")
 	_screen_layer.add_child(screen)

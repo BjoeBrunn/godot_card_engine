@@ -1,6 +1,6 @@
 @tool
 class_name CardDatabase
-extends RefCounted
+extends Reference
 
 var id: String = ""
 var name: String = ""
@@ -8,7 +8,7 @@ var name: String = ""
 var _cards: Dictionary = {}
 
 
-func _init(id: String, name: String):
+func _init(id: String, name: String) -> void:
 	self.id = id
 	self.name = name
 

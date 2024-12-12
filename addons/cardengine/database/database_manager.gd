@@ -14,8 +14,8 @@ func clean() -> void:
 	_databases = {}
 
 
-func validate_form(form_name: String, form: Dictionary) -> Array[String]:
-	var errors: Array[String] = []
+func validate_form(form_name: String, form: Dictionary) -> Array:
+	var errors = []
 
 	if form_name == "new_database":
 		var id = form["id"]
@@ -59,8 +59,8 @@ func validate_form(form_name: String, form: Dictionary) -> Array[String]:
 
 func load_databases(folder: String) -> void:
 	_folder = folder
-	var dir = Directory.new()
-	if dir.open(_folder) == OK:
+	var dir = DirAccess.open(_folder)
+	if dir:
 		dir.list_dir_begin()
 		var filename = dir.get_next()
 		while filename != "":
@@ -151,4 +151,3 @@ func _read_database(filename: String) -> CardDatabase:
 			db.add_card(card)
 
 	return db
-
