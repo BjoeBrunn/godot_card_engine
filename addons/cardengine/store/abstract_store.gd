@@ -282,7 +282,7 @@ func remove_card(ref: int) -> void:
 	var index: int = _ref2idx(ref)
 
 	if index >= 0:
-		_cards.remove(index)
+		_cards.remove_at(index)
 		_update_stats()
 		_update_filtered()
 		emit_signal("card_removed", index)
@@ -331,7 +331,7 @@ func move_card(ref: int, to: AbstractStore) -> CardInstance:
 
 	if index >= 0:
 		var card = _cards[index]
-		_cards.remove(index)
+		_cards.remove_at(index)
 		_update_stats()
 		_update_filtered()
 		emit_signal("card_removed", index)

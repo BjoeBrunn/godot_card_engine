@@ -15,9 +15,9 @@ var _edit: bool = false
 func setup(form_name: String, manager: AbstractManager) -> void:
 	_form_name = form_name
 	_manager = manager
+	
 
-
-func popup_centered(size: Vector2 = Vector2()) -> void:
+func popup_centered(size: Vector2i = Vector2i()) -> void:
 	_edit = false
 	_clear_errors()
 	_reset_form()
