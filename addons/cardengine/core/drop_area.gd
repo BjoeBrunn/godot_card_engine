@@ -29,7 +29,7 @@ func can_drop_data(_position: Vector2, data) -> bool:
 
 	if data == "card_engine:drag":
 		var source := _manager.get_drag_source()
-		if not source_filter.empty() and not source_filter.has(source):
+		if not source_filter.is_empty() and not source_filter.has(source):
 			return false
 
 		if _filter != null:

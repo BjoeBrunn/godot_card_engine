@@ -77,7 +77,7 @@ func containers() -> Dictionary:
 
 
 func create_container(cont: ContainerData) -> void:
-	var dir = DirAccess(_private_folder)
+	var dir = DirAccess.open(_private_folder)
 	if dir:
 		dir.make_dir(cont.id)
 		var private_scene = _write_private_scene(cont)
@@ -277,7 +277,7 @@ func _write_private_scene(cont: ContainerData) -> String:
 
 
 func _write_public_scene(cont: ContainerData, private_scene: String) -> void:
-	var dir = Directory.new()
+	var dir = DirAccess.open("res://")
 	if dir.dir_exists(FMT_IMPL_FOLDER % [_folder, cont.id]):
 		return
 	else:

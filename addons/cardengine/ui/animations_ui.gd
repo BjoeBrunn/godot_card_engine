@@ -214,7 +214,8 @@ func _load_sequence(seq: AnimationSequence, layout: Control, tools: Control) -> 
 			up_btn.text = "▲"
 			up_btn.hint_tooltip = "Move up"
 			step_layout.add_child(up_btn)
-			up_btn.connect("pressed", Callable(self, "_on_UpBtn_pressed"), [seq, index])
+			#up_btn.connect("pressed", Callable(self, "_on_UpBtn_pressed"), [seq, index])
+			up_btn.pressed.connect(_on_UpBtn_pressed).bind([seq, index])
 
 			if not(step.editable_transi and step.editable_val) or index < 1:
 					up_btn.disabled = true
@@ -226,7 +227,8 @@ func _load_sequence(seq: AnimationSequence, layout: Control, tools: Control) -> 
 			down_btn.text = "▼"
 			down_btn.hint_tooltip = "Move down"
 			step_layout.add_child(down_btn)
-			down_btn.connect("pressed", Callable(self, "_on_DownBtn_pressed"), [seq, index])
+			#down_btn.connect("pressed", Callable(self, "_on_DownBtn_pressed"), [seq, index])
+			down_btn.pressed.connect(_on_DownBtn_pressed).bind([seq, index])
 
 			if not(step.editable_transi and step.editable_val) or index >= seq.length()-1:
 					down_btn.disabled = true
@@ -238,7 +240,8 @@ func _load_sequence(seq: AnimationSequence, layout: Control, tools: Control) -> 
 			dup_btn.text = "D"
 			dup_btn.hint_tooltip = "Duplicate step"
 			step_layout.add_child(dup_btn)
-			dup_btn.connect("pressed", Callable(self, "_on_DupBtn_pressed"), [seq, step])
+			#dup_btn.connect("pressed", Callable(self, "_on_DupBtn_pressed"), [seq, step])
+			dup_btn.pressed.connect(_on_DupBtn_pressed).bind([seq, step])
 
 			if not(step.editable_transi and step.editable_val):
 					dup_btn.disabled = true
@@ -247,7 +250,8 @@ func _load_sequence(seq: AnimationSequence, layout: Control, tools: Control) -> 
 			del_btn.text = "X"
 			del_btn.hint_tooltip = "Delete step"
 			step_layout.add_child(del_btn)
-			del_btn.connect("pressed", Callable(self, "_on_DelStepBtn_pressed"), [seq, index])
+			#del_btn.connect("pressed", Callable(self, "_on_DelStepBtn_pressed"), [seq, index])
+			del_btn.pressed.connect(_on_DeleteBtn_pressed).bind([seq, step])
 
 			if not(step.editable_transi and step.editable_val):
 				del_btn.disabled = true

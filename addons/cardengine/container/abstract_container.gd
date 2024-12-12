@@ -143,7 +143,7 @@ func _update_container() -> void:
 			_transitions.in_anchor.enabled = true
 			_transitions.in_anchor.position = anchor.rect_position
 			_transitions.in_anchor.scale = anchor.rect_scale
-			_transitions.in_anchor.rotation = deg2rad(anchor.rect_rotation)
+			_transitions.in_anchor.rotation = deg_to_rad(anchor.rect_rotation)
 
 	if not out_anchor.is_empty():
 		var anchor = get_node(out_anchor)
@@ -156,7 +156,7 @@ func _update_container() -> void:
 			_transitions.out_anchor.enabled = true
 			_transitions.out_anchor.position = anchor.rect_position
 			_transitions.out_anchor.scale = anchor.rect_scale
-			_transitions.out_anchor.rotation = deg2rad(anchor.rect_rotation)
+			_transitions.out_anchor.rotation = deg_to_rad(anchor.rect_rotation)
 
 	# Adding missing cards
 	for card in _store.cards():
@@ -178,10 +178,14 @@ func _update_container() -> void:
 		visual_inst.set_drag_widget(drag_widget)
 		visual_inst.set_drop_area(_drop_area)
 		visual_inst.set_animation(CardEngine.anim().get_animation(_anim))
-		visual_inst.connect("need_removal", Callable(self, "_on_need_removal"), [visual_inst])
-		visual_inst.connect("clicked", Callable(self, "_on_card_clicked"), [visual_inst])
-		visual_inst.connect("focused", Callable(self, "_on_card_focused"), [visual_inst])
-		visual_inst.connect("unfocused", Callable(self, "_on_card_unfocused"))
+		#visual_inst.connect("need_removal", Callable(self, "_on_need_removal"), [visual_inst])
+		visual_inst.need_removal.connect(_on_need_removal).bind([visual_inst])
+		#visual_inst.connect("clicked", Callable(self, "_on_card_clicked"), [visual_inst])
+		visual_inst.clicked.connect(_on_card_clicked).bind([visual_inst])
+		#visual_inst.connect("focused", Callable(self, "_on_card_focused"), [visual_inst])
+		visual_inst.focused.connect(_on_card_focused).bind([visual_inst])
+		#visual_inst.connect("unfocused", Callable(self, "_on_card_unfocused"))
+		visual_inst.unfocused.connect(_on_card_unfocused)
 
 		if _board != null:
 			var last_trans := _board.get_last_known_transform(card.ref())
