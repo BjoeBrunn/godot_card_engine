@@ -7,7 +7,7 @@ var _screens = {
 	"board": preload("res://screens/board/board_screen.tscn")
 }
 
-onready var _screen_layer = $ScreenLayer
+@onready var _screen_layer = $ScreenLayer
 
 
 func _ready():
