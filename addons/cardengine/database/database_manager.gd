@@ -103,7 +103,7 @@ func delete_database(id: String):
 	var db = _databases[id]
 	_databases.erase(id)
 
-	var dir = Directory.new()
+	var dir = DirAccess.open("res://")
 	dir.remove(FORMAT_DB_PATH % [_folder, db.id])
 
 	emit_signal("changed")

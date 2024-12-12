@@ -87,7 +87,7 @@ func delete_effect(id: String) -> void:
 
 	_effects.erase(id)
 
-	var dir = Directory.new()
+	var dir = DirAccess.open("res://")
 	dir.remove(FORMAT_FX_SCRIPT % [_folder, id])
 
 	emit_signal("filesystem_changed")

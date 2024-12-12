@@ -3,12 +3,12 @@ extends Control
 
 signal dropped(card, source, on_card)
 
-export(Array) var source_filter: Array = []
+@export var source_filter: Array = []
 
 var _enabled: bool = true
 var _filter: Query = null
 
-onready var _manager: GeneralManager = CardEngine.general()
+@onready var _manager: GeneralManager = CardEngine.general()
 
 
 func set_enabled(state: bool) -> void:

@@ -1,6 +1,6 @@
 @tool
 class_name CardDatabase
-extends Reference
+extends RefCounted
 
 var id: String = ""
 var name: String = ""

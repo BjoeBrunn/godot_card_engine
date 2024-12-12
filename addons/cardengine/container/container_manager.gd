@@ -52,8 +52,8 @@ func load_containers(folder: String, private_folder: String, tpl_folder: String)
 	_folder = folder
 	_private_folder = private_folder
 	_tpl_folder = tpl_folder
-	var dir = Directory.new()
-	if dir.open(_private_folder) == OK:
+	var dir = DirAccess.open(_private_folder)
+	if dir:
 		dir.list_dir_begin()
 		var filename = dir.get_next()
 		while filename != "":
@@ -77,8 +77,8 @@ func containers() -> Dictionary:
 
 
 func create_container(cont: ContainerData) -> void:
-	var dir = Directory.new()
-	if dir.open(_private_folder) == OK:
+	var dir = DirAccess(_private_folder)
+	if dir:
 		dir.make_dir(cont.id)
 		var private_scene = _write_private_scene(cont)
 		if private_scene == "":
@@ -196,7 +196,7 @@ func _write_metadata(cont: ContainerData) -> void:
 
 
 func _write_private_scene(cont: ContainerData) -> String:
-	var dir = Directory.new()
+	var dir = DirAccess.open("res://")
 	if !dir.dir_exists(FMT_PRIVATE_FOLDER % [_private_folder, cont.id]):
 		dir.make_dir_recursive(FMT_PRIVATE_FOLDER % [_private_folder, cont.id])
 

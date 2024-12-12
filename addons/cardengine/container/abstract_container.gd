@@ -29,8 +29,8 @@ var _board: AbstractBoard = null
 var _grid_card_width: float = 200
 var _grid_fixed_width: bool = true
 var _grid_card_spacing: Vector2 = Vector2(0.75, 1.2)
-var _grid_halign: int = HALIGN_CENTER
-var _grid_valign: int = VALIGN_CENTER
+var _grid_halign: int = HORIZONTAL_ALIGNMENT_CENTER #HALIGN_CENTER
+var _grid_valign: int = VERTICAL_ALIGNMENT_CENTER #VALIGN_CENTER
 var _grid_columns: int = -1
 var _grid_expand: bool = true
 
@@ -55,8 +55,8 @@ var _fine_pos_max: Vector2 = Vector2(0.0, 60.0)
 # Angle fine tuning
 var _fine_angle: bool = false
 var _fine_angle_mode = FineTuningMode.RANDOM
-var _fine_angle_min: float = deg2rad(-10.0)
-var _fine_angle_max: float = deg2rad(10.0)
+var _fine_angle_min: float = deg_to_rad(-10.0)
+var _fine_angle_max: float = deg_to_rad(10.0)
 
 # Scale fine tuning
 var _fine_scale: bool = false
