@@ -27,4 +27,3 @@ func _fill_form(data: Dictionary) -> void:
 	_cont_id.editable = false
 	_cont_id.text = data["id"]
 	_cont_name.text = data["name"]
-

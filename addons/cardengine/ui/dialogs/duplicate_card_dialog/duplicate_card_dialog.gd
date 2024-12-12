@@ -25,4 +25,3 @@ func _extract_form() -> Dictionary:
 func _fill_form(data: Dictionary) -> void:
 	_card_id.text = "%s_copy" % data["id"]
 	_db = data["db"]
-

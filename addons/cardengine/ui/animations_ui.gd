@@ -108,19 +108,22 @@ func _load_sequence(seq: AnimationSequence, layout: Control, tools: Control) -> 
 		var btn = Button.new()
 		btn.text = "Initialize"
 		tools.add_child(btn)
-		btn.connect("pressed", Callable(self, "_on_InitBtn_pressed"), [seq])
+		#btn.connect("pressed", Callable(self, "_on_InitBtn_pressed"), [seq])
+		btn.pressed.connect(_on_InitBtn_pressed).bind([seq])
 	else:
 		var add_btn = Button.new()
 		add_btn.text = "Add step"
 		add_btn.hint_tooltip = "Insert a step before the last step"
 		tools.add_child(add_btn)
-		add_btn.connect("pressed", Callable(self, "_on_AddStepBtn_pressed"), [seq])
+		#add_btn.connect("pressed", Callable(self, "_on_AddStepBtn_pressed"), [seq])
+		add_btn.pressed.connect(_on_AddStepBtn_pressed).bind([seq])
 
 		var clear_btn = Button.new()
 		clear_btn.text = "Clear sequence"
 		clear_btn.hint_tooltip = "Remove all the steps"
 		tools.add_child(clear_btn)
-		clear_btn.connect("pressed", Callable(self, "_on_ClearSeqBtn_pressed"), [seq])
+		#clear_btn.connect("pressed", Callable(self, "_on_ClearSeqBtn_pressed"), [seq])
+		clear_btn.pressed.connect(_on_ClearSeqBtn_pressed).bind([seq])
 
 		var index := 0
 		for step in seq.sequence():
@@ -148,7 +151,8 @@ func _load_sequence(seq: AnimationSequence, layout: Control, tools: Control) -> 
 				btn.disabled = not step.editable_transi
 				btn.hint_tooltip = "Edit step transition"
 				step_layout.add_child(btn)
-				btn.connect("pressed", Callable(self, "_on_TransiBtn_pressed"), [seq, index])
+				#btn.connect("pressed", Callable(self, "_on_TransiBtn_pressed"), [seq, index])
+				btn.pressed.connect(_on_TransiBtn_pressed).bind([seq, index])
 
 			var initial_txt = "initial(%s)"
 			if index == 0:
@@ -200,7 +204,8 @@ func _load_sequence(seq: AnimationSequence, layout: Control, tools: Control) -> 
 				btn.disabled = not step.editable_val
 				btn.hint_tooltip = "Edit step value"
 				step_layout.add_child(btn)
-				btn.connect("pressed", Callable(self, "_on_ValueBtn_pressed"), [seq, index])
+				#btn.connect("pressed", Callable(self, "_on_ValueBtn_pressed"), [seq, index])
+				btn.pressed.connect(_on_ValueBtn_pressed).bind([seq, index])
 
 			var prev_step := seq.step(index-1)
 			var next_step := seq.step(index+1)

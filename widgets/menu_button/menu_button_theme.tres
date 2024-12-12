@@ -1,10 +1,10 @@
 [gd_resource type="Theme" load_steps=11 format=3 uid="uid://4yx28d1p88hr"]
 
-[ext_resource type="Texture2D" uid="uid://c6ujl8vyat6s5" path="res://widgets/menu_button/button-normal.png" id="2_p4dak"]
-[ext_resource type="Texture2D" uid="uid://cya0hv3c3jvij" path="res://widgets/menu_button/button-disabled.png" id="2_sl027"]
-[ext_resource type="Texture2D" uid="uid://dpf61g85swj02" path="res://widgets/menu_button/button-focused.png" id="3_01swx"]
-[ext_resource type="Texture2D" uid="uid://51s7ih32cnls" path="res://widgets/menu_button/button-hover.png" id="4_am4k0"]
-[ext_resource type="Texture2D" uid="uid://cssqas5jqagxh" path="res://widgets/menu_button/button-clicked.png" id="6_crn4m"]
+[ext_resource type="Texture2D" uid="uid://lgdcg3drxntw" path="res://widgets/menu_button/button-normal.png" id="2_p4dak"]
+[ext_resource type="Texture2D" uid="uid://bjf60islitx56" path="res://widgets/menu_button/button-disabled.png" id="2_sl027"]
+[ext_resource type="Texture2D" uid="uid://b4swma838o2y4" path="res://widgets/menu_button/button-focused.png" id="3_01swx"]
+[ext_resource type="Texture2D" uid="uid://d1gvj6et0bexa" path="res://widgets/menu_button/button-hover.png" id="4_am4k0"]
+[ext_resource type="Texture2D" uid="uid://dy23mhay7rmf8" path="res://widgets/menu_button/button-clicked.png" id="6_crn4m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n24ah"]
 texture = ExtResource("2_sl027")
