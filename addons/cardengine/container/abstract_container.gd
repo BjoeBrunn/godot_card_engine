@@ -160,7 +160,7 @@ func _update_container() -> void:
 
 	# Adding missing cards
 	for card in _store.cards():
-		if _cards.find_node(CARD_NODE_FMT % card.ref(), false, false) != null:
+		if _cards.f #.find_node(CARD_NODE_FMT % card.ref(), false, false) != null:
 			continue
 
 		var visual_inst = card_visual.instantiate()

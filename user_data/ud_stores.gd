@@ -24,7 +24,7 @@ func _get_stores() -> Dictionary:
 	var stores = file.get_sections()
 
 	for id in stores:
-		result[id] = file.get_value(id, "name", "")
+		result[id] = file.get_value(String(id), "name", "")
 
 	return result
 
@@ -97,11 +97,11 @@ func load_store(id: String, dest: AbstractStore) -> void:
 	dest.save_name = data["name"]
 
 	for card in data["cards"]:
-		var db = CardEngine.db().get_database(card["source"])
+		var db = CardEngine.db().get_database(String(card["source"]))
 		if db == null:
 			continue
 
-		var card_data = db.get_card(card["id"])
+		var card_data = db.get_card(String(card["id"]))
 		if card_data == null:
 			continue
 

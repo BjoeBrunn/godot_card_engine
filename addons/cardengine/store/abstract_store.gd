@@ -83,7 +83,7 @@ var save_name: String = ""
 
 # var _cards: Array[CardInstance] = [] # https://github.com/godotengine/godot/issues/53771
 # var _filtered: Array[CardInstance] = [] # https://github.com/godotengine/godot/issues/53771
-var _cards := []
+var _cards :Array[CardInstance] = []
 var _filtered := []
 var _cards_count: Dictionary = {}
 var _categs: Dictionary = {}
