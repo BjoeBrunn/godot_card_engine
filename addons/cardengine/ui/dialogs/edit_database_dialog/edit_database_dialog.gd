@@ -161,7 +161,8 @@ func _update_categs():
 
 		select.select(selected)
 
-		select.connect("item_selected", Callable(self, "_on_CategFilter_item_selected"), [select, meta])
+		#select.connect("item_selected", Callable(self, "_on_CategFilter_item_selected"), [select, meta])
+		select.item_selected.connect(_on_CategFilter_item_selected.bind([select, meta]))
 
 
 func _update_values():
