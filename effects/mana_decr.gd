@@ -13,9 +13,8 @@ func get_filter() -> Query:
 
 # Override this to returns an array of modifiers applied by this effect
 func get_modifiers() -> Array[AbstractModifier]:
-	var modifiers := []
+	var modifiers :Array[AbstractModifier] = []
 
 	modifiers.append(ValueChange.new("decr", true, "mana", -1))
 
 	return modifiers
-

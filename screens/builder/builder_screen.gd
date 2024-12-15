@@ -289,7 +289,7 @@ func _on_NameSort_toggled(_button_pressed: bool) -> void:
 
 func _on_LibraryScroll_resized() -> void:
 	if _scroll != null:
-		_container.rect_min_size = _scroll.rect_size
+		_container.custom_minimum_size = _scroll.size
 
 
 func _on_CardDrop_dropped(card: CardInstance, _source: String, _on_card: CardInstance) -> void:

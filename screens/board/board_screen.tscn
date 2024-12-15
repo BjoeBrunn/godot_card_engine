@@ -30,7 +30,7 @@ anchor_bottom = 1.0
 script = ExtResource("3")
 
 [node name="Pile1" parent="Board" instance=ExtResource("5")]
-anchors_preset = 0
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -39,6 +39,9 @@ offset_left = -401.0
 offset_top = -310.0
 offset_right = -101.0
 offset_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="Board/Pile1"]
 show_behind_parent = true
@@ -51,7 +54,7 @@ mouse_filter = 2
 color = Color(0.14902, 0.172549, 0.239216, 1)
 
 [node name="Pile2" parent="Board" instance=ExtResource("5")]
-anchors_preset = 0
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -60,6 +63,9 @@ offset_left = -149.0
 offset_top = -310.0
 offset_right = 151.0
 offset_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="Board/Pile2"]
 show_behind_parent = true
@@ -70,7 +76,7 @@ mouse_filter = 2
 color = Color(0.14902, 0.172549, 0.239216, 1)
 
 [node name="Pile3" parent="Board" instance=ExtResource("7")]
-anchors_preset = 0
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -79,6 +85,9 @@ offset_left = 168.0
 offset_top = -309.0
 offset_right = 468.0
 offset_bottom = -9.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 card_visual = ExtResource("6")
 
 [node name="ColorRect" type="ColorRect" parent="Board/Pile3"]
@@ -113,7 +122,7 @@ offset_bottom = 30.0
 text = "Draw"
 
 [node name="Hand" parent="Board" instance=ExtResource("4")]
-anchors_preset = 0
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -121,6 +130,9 @@ anchor_bottom = 1.0
 offset_left = -300.0
 offset_top = -100.0
 offset_right = 300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="DiscardBtn" type="Button" parent="Board/Hand"]
 layout_mode = 0
@@ -142,9 +154,6 @@ offset_left = -200.0
 offset_right = 0.0
 text = "Back to menu"
 
-[connection signal="card_dropped" from="Board/Pile1" to="." method="_on_Pile1_card_dropped"]
-[connection signal="card_dropped" from="Board/Pile2" to="." method="_on_Pile2_card_dropped"]
-[connection signal="card_dropped" from="Board/Pile3" to="." method="_on_Pile3_card_dropped"]
 [connection signal="pressed" from="Board/Pile3/ShuffleBtn" to="." method="_on_ShuffleBtn_pressed"]
 [connection signal="pressed" from="Board/Pile3/DrawBtn" to="." method="_on_DrawBtn_pressed"]
 [connection signal="pressed" from="Board/Hand/DiscardBtn" to="." method="_on_DiscardBtn_pressed"]

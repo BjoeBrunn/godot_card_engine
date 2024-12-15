@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://screens/game/game_screen.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dhold8ocsbk5t" path="res://widgets/small_button/small_button.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://containers/hand/hand.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://containers/token_grid/token_grid.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bn2l2wx24vb8b" path="res://containers/token_grid/token_grid.tscn" id="4"]
 [ext_resource type="Texture2D" uid="uid://b1hydkk54iyiq" path="res://screens/game/mana_point.png" id="6"]
 
 [node name="GameScreen" type="Control"]
@@ -99,9 +99,12 @@ offset_bottom = 150.0
 color = Color(0.14902, 0.172549, 0.239216, 1)
 
 [node name="TokenGrid" parent="PlayZone" instance=ExtResource("4")]
-anchors_preset = 0
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 in_anchor = NodePath("../TokenInOut")
 out_anchor = NodePath("../TokenInOut")
 
@@ -209,9 +212,12 @@ offset_right = 400.0
 color = Color(0.239216, 0.286275, 0.439216, 1)
 
 [node name="HandContainer" parent="HandZone" instance=ExtResource("3")]
-anchors_preset = 0
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 in_anchor = NodePath("../HandInAnchor")
 out_anchor = NodePath("../HandOutAnchor")
 
@@ -291,8 +297,6 @@ autostart = true
 
 [connection signal="pressed" from="DeckZone/DrawBtn" to="." method="_on_DrawBtn_pressed"]
 [connection signal="pressed" from="DiscardZone/ReshuffleBtn" to="." method="_on_ReshuffleBtn_pressed"]
-[connection signal="card_clicked" from="PlayZone/TokenGrid" to="." method="_on_TokenGrid_card_clicked"]
-[connection signal="card_dropped" from="PlayZone/TokenGrid" to="." method="_on_TokenGrid_card_dropped"]
 [connection signal="pressed" from="ManaBar/EndTurnBtn" to="." method="_on_EndTurnBtn_pressed"]
 [connection signal="toggled" from="EffectsLayout/ManaMultiplier" to="." method="_on_ManaMultiplier_toggled"]
 [connection signal="pressed" from="EffectsLayout/ManaIncrease" to="." method="_on_ManaIncrease_pressed"]

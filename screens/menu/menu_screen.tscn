@@ -50,7 +50,10 @@ layout_mode = 2
 text = "QUIT"
 
 [node name="HomeDisplay" parent="." instance=ExtResource("4")]
-anchors_preset = 0
+layout_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="ButtonsLayout/NewGameBtn" to="." method="_on_NewGameBtn_pressed"]
 [connection signal="pressed" from="ButtonsLayout/BoardGameBtn" to="." method="_on_BoardGameBtn_pressed"]

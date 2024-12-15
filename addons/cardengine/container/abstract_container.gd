@@ -141,9 +141,9 @@ func _update_container() -> void:
 			_transitions.in_anchor.rotation = anchor.rotation
 		elif anchor is Control:
 			_transitions.in_anchor.enabled = true
-			_transitions.in_anchor.position = anchor.rect_position
-			_transitions.in_anchor.scale = anchor.rect_scale
-			_transitions.in_anchor.rotation = deg_to_rad(anchor.rect_rotation)
+			_transitions.in_anchor.position = anchor.position
+			_transitions.in_anchor.scale = anchor.scale
+			_transitions.in_anchor.rotation = deg_to_rad(anchor.rotation)
 
 	if not out_anchor.is_empty():
 		var anchor = get_node(out_anchor)
@@ -154,13 +154,13 @@ func _update_container() -> void:
 			_transitions.out_anchor.rotation = anchor.rotation
 		elif anchor is Control:
 			_transitions.out_anchor.enabled = true
-			_transitions.out_anchor.position = anchor.rect_position
-			_transitions.out_anchor.scale = anchor.rect_scale
-			_transitions.out_anchor.rotation = deg_to_rad(anchor.rect_rotation)
+			_transitions.out_anchor.position = anchor.position
+			_transitions.out_anchor.scale = anchor.scale
+			_transitions.out_anchor.rotation = deg_to_rad(anchor.rotation)
 
 	# Adding missing cards
 	for card in _store.cards():
-		if _cards.f #.find_node(CARD_NODE_FMT % card.ref(), false, false) != null:
+		if _cards.find_child(CARD_NODE_FMT % card.ref(), false, false) != null:
 			continue
 
 		var visual_inst = card_visual.instantiate()
@@ -179,11 +179,11 @@ func _update_container() -> void:
 		visual_inst.set_drop_area(_drop_area)
 		visual_inst.set_animation(CardEngine.anim().get_animation(_anim))
 		#visual_inst.connect("need_removal", Callable(self, "_on_need_removal"), [visual_inst])
-		visual_inst.need_removal.connect(_on_need_removal).bind([visual_inst])
+		visual_inst.need_removal.connect(_on_need_removal.bind([visual_inst]))
 		#visual_inst.connect("clicked", Callable(self, "_on_card_clicked"), [visual_inst])
-		visual_inst.clicked.connect(_on_card_clicked).bind([visual_inst])
+		visual_inst.clicked.connect(_on_card_clicked.bind([visual_inst]))
 		#visual_inst.connect("focused", Callable(self, "_on_card_focused"), [visual_inst])
-		visual_inst.focused.connect(_on_card_focused).bind([visual_inst])
+		visual_inst.focused.connect(_on_card_focused.bind([visual_inst]))
 		#visual_inst.connect("unfocused", Callable(self, "_on_card_unfocused"))
 		visual_inst.unfocused.connect(_on_card_unfocused)
 
@@ -213,7 +213,7 @@ func _update_container() -> void:
 	# Sorting according to store order
 	var index = 0
 	for card in _store.cards():
-		var visual = _cards.find_node(CARD_NODE_FMT % card.ref(), false, false)
+		var visual = _cards.find_child(CARD_NODE_FMT % card.ref(), false, false)
 		_cards.move_child(visual, index)
 		index += 1
 
@@ -348,7 +348,7 @@ func _path_layout(trans: CardTransform, card_index: int, card_size: Vector2):
 	path_offset = _path_card_width / 2 + path_offset_delta * card_index
 
 	trans.scale =  Vector2(width_ratio, width_ratio)
-	trans.pos = curve.interpolate_baked(path_offset)
+	trans.pos = curve.sample_baked(path_offset)
 
 
 func _fine_tune(trans: CardTransform, card_index: int, card_size: Vector2):
